@@ -93,3 +93,12 @@ function preparing(){
     alert("준비중입니다:)");
 }
 
+window.addEventListener('scroll', function() {
+    const header = document.getElementsByClassName('top-header');
+    const scrollPosition = window.scrollY;
+    
+    const maxScroll = 300;
+    const transparency = Math.min(scrollPosition / maxScroll, 0.5);
+    
+    header.style.backgroundColor = `rgba(225, 225, 225, ${1 - transparency})`;
+});
