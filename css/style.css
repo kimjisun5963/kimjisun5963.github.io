@@ -379,14 +379,18 @@ img {
   padding: 10px;
   text-decoration: none;
   border-radius: 50%;
+  width: 30px;
+  height: 30px;
 }
 
 .kind_wrap .arrow > a.prev {
   left: 10px; 
+  font-size: 0.5rem;
 }
 
 .kind_wrap .arrow > a.next {
   right: 10px; 
+  font-size: 0.5rem;
 }
 
 .content-box{
