@@ -96,7 +96,8 @@ function preparing(){
 window.addEventListener('scroll', function() {
     const header = document.getElementsByClassName('top-header');
     const scrollPosition = window.scrollY;
-    
+    console.log("*******");
+    console.log(header);
     const maxScroll = 300;
     const transparency = Math.min(scrollPosition / maxScroll, 0.5);
     
