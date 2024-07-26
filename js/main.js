@@ -98,7 +98,7 @@ window.addEventListener('scroll', function() {
     const scrollPosition = window.scrollY;
     console.log("*******");
     console.log(header);
-    const maxScroll = 300;
+    const maxScroll = 87;
     const transparency = Math.min(scrollPosition / maxScroll, 0.5);
     
     header.style.backgroundColor = `rgba(225, 225, 225, ${1 - transparency})`;
