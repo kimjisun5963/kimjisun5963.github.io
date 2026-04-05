@@ -1427,10 +1427,89 @@
 		myModal.addEventListener('shown.bs.modal', () => {
 			myInput.focus()
 		})
+
+		function PanoramaEffect({ swiper, extendParams, on }) {
+        extendParams({
+            panoramaEffect: {
+                depth: 300,
+                rotate: 25
+            }
+        });
+        on("beforeInit", () => {
+            if (swiper.params.effect !== "panorama") return;
+            swiper.classNames.push(`${swiper.params.containerModifierClass}panorama`);
+            swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
+            
+            Object.assign(swiper.params, { watchSlidesProgress: true });
+            Object.assign(swiper.originalParams, { watchSlidesProgress: true });
+        });
+        on("progress", () => {
+            if (swiper.params.effect !== "panorama") return;
+            
+            const { depth = 200, rotate = 30 } = swiper.params.panoramaEffect;
+            const radian = rotate * Math.PI / 180 / 2;
+            const ratio = 1 / (180 / rotate);
+            
+            swiper.slides.forEach((slide, index) => {
+                const progress = slide.progress;
+                const slideWidth = swiper.slidesSizesGrid[index];
+                const centerOffset = swiper.params.centeredSlides ? 0 : (swiper.params.slidesPerView - 1) * 0.5;
+                const position = progress + centerOffset;
+                const scaleFactor = 1 - Math.cos(position * ratio * Math.PI);
+                const translateX = `${position * (slideWidth / 3) * scaleFactor}px`;
+                const rotateY = `${position * rotate}deg`;
+                const translateZ = `${slideWidth * 0.5 / Math.sin(radian) * scaleFactor - depth}px`;
+
+                slide.style.transform = swiper.params.direction === "horizontal"
+                    ? `translateX(${translateX}) translateZ(${translateZ}) rotateY(${rotateY})`
+                    : `translateY(${translateX}) translateZ(${translateZ}) rotateX(${-rotateY})`;
+            });
+        });
+        on("setTransition", (swiper, speed) => {
+            if (swiper.params.effect === "panorama") {
+                swiper.slides.forEach(slide => {
+                    slide.style.transitionDuration = `${speed}ms`;
+                });
+            }
+        });
+    }
+    new Swiper(".inc01_slide", {
+        modules: [PanoramaEffect],
+        effect: "panorama",
+        slidesPerView: "auto",
+        loop: true,
+        loopAdditionalSlides: 1,
+        spaceBetween:9,
+        centeredSlides: true,
+        panoramaEffect: {
+            depth: 300,
+            rotate: 25
+        },
+        navigation:{
+            prevEl:".prev",
+            nextEl:".next",
+        },
+        breakpoints:{
+            1025:{
+                spaceBetween:30
+            },
+            769:{
+                spaceBetween:20
+            },
+            481:{
+                spaceBetween:15
+            },
+            391:{
+                spaceBetween:12
+            }
+        }
+    });
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 </body>
 
 </html>

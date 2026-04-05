@@ -209,5 +209,75 @@ img {
     z-index:9999;
 }
 
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');/* regular - 400, medium - 500, semibold - 600, bold - 700 */ 
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+:root{--k-font:'Pretendard';--e-font:"Ysabeau", sans-serif;--primary:#111}
+body,html {height:100%;margin:0;padding:0}
+ul, li, dl, dt, dd, p, span, h3, h2{margin:0;padding:0}
+a{text-decoration:none}
+ul, li{list-style:none}
+*, :after, :before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+
+#inc01{overflow:hidden;position:relative;padding-top:215px;font-family:var(--e-font), var(--k-font)}
+
+/* title */
+#inc01 .tit_area{position:relative;z-index:1;text-align:center}
+#inc01 .tit_area h3{font-size:15px;font-weight:700;color:#777;font-family:var(--e-font)}
+#inc01 .tit_area h2{position:relative;z-index:2;padding:25px 0 50px;font-size:45px;font-weight:500;line-height:1.2;white-space:pre-line;color:#222;font-family:var(--e-font)}
+
+/* controls */
+#inc01 .controls{display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:2;padding-bottom:45px}
+#inc01 .controls span{display:flex;align-items:center;justify-content:center;width:60px;height:30px;border:1px solid #e1e1e1;border-radius:5px;color:#e1e1e1;cursor:pointer;transition:0.2s}
+#inc01 .controls span svg{width:18px}
+
+/* slide */
+#inc01 .inc01_slide{overflow:initial;position:relative;width:100%;padding-bottom:50px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide{position:relative;width:450px;transition:all .2s;cursor:pointer}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide p{position:absolute;bottom:8%;left:45px;z-index:2;font-size:19px;font-weight:700;color:#fff;opacity:0;transition:all .2s;font-family:var(--k-font)}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide a{display:block;position:relative}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide a::before{content:"";display:block;position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;background:rgba(0, 0, 0, 0.5);opacity:0;transition:all .2s}
+
+/* 반응형 [s] */
+@media (hover:hover){
+#inc01 .controls span:hover{color:#fff;background:#222}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide:hover p{opacity:1}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide a:hover::before{opacity:1}
+}
+@media (max-width:1380px){
+}
+@media (max-width:1024px){
+#inc01{padding-top:180px}
+#inc01 .tit_area h2{padding:20px 0 40px;font-size:40px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide{width:340px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide p{bottom:50%;left:50%;transform:translate(-50%, 50%);width:100%;font-size:17px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide img{width:100%;height:100%;object-fit:cover}
+}
+@media (max-width:768px){
+#inc01{padding-top:120px}
+#inc01 .tit_area h2{padding:15px 0 35px;font-size:33px}
+#inc01 .controls{padding-bottom:35px}
+#inc01 .controls span{width:55px;height:28px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide{width:300px}
+}
+@media (max-width:480px){
+#inc01{padding-top:90px}
+#inc01 .tit_area h2{padding:12px 0 32px;font-size:26px}
+#inc01 .controls{padding-bottom:25px}
+#inc01 .controls span{width:52px;height:28px}
+#inc01 .controls span svg{width:16px;height:16px}
+#inc01 .inc01_slide{padding-bottom:20px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide p{font-size:16px} 
+}
+@media (max-width:390px){
+#inc01{padding-top:80px}
+#inc01 .tit_area h2{padding:10px 0 30px;font-size:23px}
+#inc01 .controls{padding-bottom:20px}
+#inc01 .controls span{width:48px;height:26px}
+#inc01 .controls span svg{width:14px;height:14px}
+#inc01 .inc01_slide{padding-bottom:0px}
+#inc01 .inc01_slide .swiper-wrapper .swiper-slide{width:280px}
+}
+/* 반응형 [e] */
   
  
